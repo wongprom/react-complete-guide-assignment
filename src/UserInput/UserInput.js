@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Input = () => {
+const Input = (props) => {
     return(
-        <div>
-            <input type='text'/>
-        </div>
+        <input 
+        type='text'
+        onChange = {props.test} 
+        value = {props.currentName}
+         />
     );
 }
 export default Input;

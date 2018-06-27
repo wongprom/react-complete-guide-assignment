@@ -11,6 +11,15 @@ class App extends Component {
     ]
   }
 
+  switchNameWithInput  = (event) => {
+    this.setState({
+      peoples: [
+        {name: event.target.value},
+        {name: 'Pelle'},
+      ]
+    }) 
+}
+
   changeNameHandler = () => {
     this.setState({
       peoples: [
@@ -20,22 +29,23 @@ class App extends Component {
     })
   }
 
+  
+
   render() {
     const oneGirl = 'Vanessa';
     return (
       <div className="App">
-        <Input />
+        <Input 
+          test = {this.switchNameWithInput}
+          currentName = {this.state.peoples[0].name} />
         <Output 
           changeName = {this.changeNameHandler}
           peopleZero = {this.state.peoples[0].name}
           oneGirl = {oneGirl}
-          peopleOne = {this.state.peoples[1].name} />
-        <Output 
-          //oneGirl = {oneGirl} 
-          />
-        <Output 
-          //peopleOne = {this.state.peoples[1].name}
-          />
+          peopleOne = {this.state.peoples[1].name} 
+           />
+        <Output animal = 'Cat' />
+        <Output animal= "Dog" />
       </div>
     );
   }

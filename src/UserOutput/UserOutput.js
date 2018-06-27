@@ -6,6 +6,7 @@ const Output = (props) => {
             <p onClick = {props.changeName}> {props.oneGirl}</p>
             <p>{props.peopleZero}</p>
             <p>{props.peopleOne}</p>
+            <p>{props.animal}</p>
         </div>
     );
 }
