@@ -6,9 +6,18 @@ import Output from './UserOutput/UserOutput';
 class App extends Component {
   state = {
     peoples: [
-      {name: 'Jimmy'},
-      {name: 'Peter'},
+      {name: 'Jimmy Wongprom'},
+      {name: 'Pelle'},
     ]
+  }
+
+  changeNameHandler = () => {
+    this.setState({
+      peoples: [
+        {name: 'Sune Bäckström'},
+        {name: 'Pelle Svanslös'},
+      ]
+    })
   }
 
   render() {
@@ -17,6 +26,7 @@ class App extends Component {
       <div className="App">
         <Input />
         <Output 
+          changeName = {this.changeNameHandler}
           peopleZero = {this.state.peoples[0].name}
           oneGirl = {oneGirl}
           peopleOne = {this.state.peoples[1].name} />
