@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
 import './App.css';
-import Input from './UserInput/UserInput';
-import Output from './UserOutput/UserOutput';
+import Validation from './Validation/Validation';
+import Char from './Char/Char';
 
 class App extends Component {
+  state = {
+    userInput: ""
+  }
+
+  inputValueHandler = (event) => {
+    this.setState({
+      userInput : event.target.value
+    });
+  }
+
+  deletCharHandler = (index) => {
+    const text = this.state.userInput.split('');
+    text.splice(index, 1);
+    const updatedText = text.join('');
+    this.setState({userInput : updatedText});
+  }
 
   render() {
-  
+
+    const charlist = this.state.userInput.split('').map( (ch, index) => {
+      return <Char 
+              character = {ch} 
+              key = {index} 
+              clicked={() => this.deletCharHandler(index)} />
+
+    });
     return (
       <div className="App">
         <ol>
@@ -17,6 +40,11 @@ class App extends Component {
           <li>Render a list of CharComponents where each CharComponent receives a different letter of the entered text (in the initial input field) as a prop.</li>
           <li>When you click a CharComponent, it should be removed from the entered text.</li>
         </ol>
+        
+        <input type="text" onChange = {this.inputValueHandler} value = {this.state.userInput}/>
+        <p>{this.state.userInput}</p>
+        <Validation inputLength = {this.state.userInput.length}/>
+        {charlist}
       </div>
     );
   }
